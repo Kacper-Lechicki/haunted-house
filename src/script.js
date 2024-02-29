@@ -5,8 +5,8 @@ import GUI from 'lil-gui';
 
 // Debug
 const gui = new GUI(); // Initializing GUI for debugging
-const GUIAmbientLightFolder = gui.addFolder('Ambient Light');
-const GUIMoonlightLightFolder = gui.addFolder('(Directional) Moonlight Light');
+const GUIAmbientLightFolder = gui.addFolder('Ambient Light'); // Creating GUI folder for ambient light
+const GUIMoonlightLightFolder = gui.addFolder('(Directional) Moonlight Light'); // Creating GUI folder for directional moonlight
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl'); // Selecting the WebGL canvas element
@@ -16,6 +16,11 @@ const scene = new THREE.Scene(); // Creating a new Three.js scene
 
 // Textures
 const textureLoader = new THREE.TextureLoader(); // Creating a texture loader
+
+let sizes = {
+	width: 0,
+	height: 0,
+};
 
 // Sizes
 window.addEventListener('resize', () => {
@@ -31,13 +36,22 @@ window.addEventListener('resize', () => {
 });
 
 // Camera
+const cameraFieldOfView = 75;
+const cameraNear = 0.1;
+const cameraFar = 100;
+
 const camera = new THREE.PerspectiveCamera(
-	75,
+	cameraFieldOfView,
 	window.innerWidth / window.innerHeight,
-	0.1,
-	100
+	cameraNear,
+	cameraFar
 );
-camera.position.set(4, 2, 5); // Setting camera position
+
+const cameraX = 4;
+const cameraY = 2;
+const cameraZ = 5;
+
+camera.position.set(cameraX, cameraY, cameraZ); // Setting camera position
 scene.add(camera); // Adding camera to the scene
 
 // Controls
@@ -50,7 +64,9 @@ renderer.setSize(window.innerWidth, window.innerHeight); // Setting renderer siz
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Setting renderer pixel ratio
 
 // Lights
-const ambientLight = new THREE.AmbientLight('#ffffff', 0.5); // Creating ambient light
+const ambientLightIntensity = 0.5;
+
+const ambientLight = new THREE.AmbientLight('#ffffff', ambientLightIntensity); // Creating ambient light
 GUIAmbientLightFolder.add(ambientLight, 'intensity')
 	.min(0)
 	.max(1)
@@ -58,7 +74,9 @@ GUIAmbientLightFolder.add(ambientLight, 'intensity')
 	.name('Intensity'); // Adding ambient light intensity control to GUI
 scene.add(ambientLight); // Adding ambient light to the scene
 
-const moonLight = new THREE.DirectionalLight('#ffffff', 1.5); // Creating directional light
+const moonLightIntensity = 1.5;
+
+const moonLight = new THREE.DirectionalLight('#ffffff', moonLightIntensity); // Creating directional light
 moonLight.position.set(4, 5, -2); // Setting light position
 GUIMoonlightLightFolder.add(moonLight, 'intensity')
 	.min(0)
@@ -98,16 +116,68 @@ const walls = new THREE.Mesh(
 	new THREE.MeshStandardMaterial({ color: '#AC8E82' })
 );
 
-walls.position.y = wallsHeight / 2 + 0.001;
+walls.position.y = wallsHeight / 2 + 0.001; // Positioning walls
 
 houseGroup.add(walls);
 
-//Floor
-const floor = new THREE.Mesh(
-	new THREE.PlaneGeometry(20, 20),
-	new THREE.MeshStandardMaterial({ color: '#A9C388', side: THREE.DoubleSide })
+//Roof
+const roofRadius = 3.5;
+const roofHeight = 1.5;
+const roofRadialSegments = 4;
+
+const roof = new THREE.Mesh(
+	new THREE.ConeGeometry(roofRadius, roofHeight, roofRadialSegments),
+	new THREE.MeshStandardMaterial({ color: '#B35F45' })
 );
+
+roof.position.y = wallsHeight + roofHeight / 2 + 0.001; // Positioning roof
+roof.rotation.y = Math.PI / 4; // Rotating roof
+
+houseGroup.add(roof);
+
+//Floor
+const floorWidth = 20;
+const floorHeight = 20;
+
+//Grass textures
+const grassTextureNormal = textureLoader.load('textures/grass/normal.jpg');
+grassTextureNormal.repeat.set(8, 8);
+grassTextureNormal.wrapS = THREE.RepeatWrapping;
+grassTextureNormal.wrapT = THREE.RepeatWrapping;
+
+const grassTextureColor = textureLoader.load('textures/grass/color.jpg');
+grassTextureColor.repeat.set(8, 8);
+grassTextureColor.wrapS = THREE.RepeatWrapping;
+grassTextureColor.wrapT = THREE.RepeatWrapping;
+
+const grassTextureAmbientOcclusion = textureLoader.load(
+	'textures/grass/ambientOcclusion.jpg'
+);
+grassTextureAmbientOcclusion.repeat.set(8, 8);
+grassTextureAmbientOcclusion.wrapS = THREE.RepeatWrapping;
+grassTextureAmbientOcclusion.wrapT = THREE.RepeatWrapping;
+
+const grassTextureRoughness = textureLoader.load(
+	'textures/grass/roughness.jpg'
+);
+grassTextureRoughness.repeat.set(8, 8);
+grassTextureRoughness.wrapS = THREE.RepeatWrapping;
+grassTextureRoughness.wrapT = THREE.RepeatWrapping;
+
+const floor = new THREE.Mesh(
+	new THREE.PlaneGeometry(floorWidth, floorHeight),
+	new THREE.MeshStandardMaterial({
+		color: '#A9C388',
+		side: THREE.DoubleSide,
+		map: grassTextureColor,
+		aoMap: grassTextureAmbientOcclusion,
+		normalMap: grassTextureNormal,
+		roughness: grassTextureRoughness,
+	})
+);
+
 floor.rotation.x = -Math.PI * 0.5; // Rotating floor
+
 scene.add(floor); // Adding floor to the scene
 
 // Animation

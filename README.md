@@ -22,3 +22,10 @@ Added GUI folders with basic controls for Ambient and Directional lights.
 
 Removed the sphere and added walls of the house.
 
+### **Step 4**:
+
+Added roof of the house.
+
+### **Step 5**:
+
+Added texture of grass for the floor of the scene.
