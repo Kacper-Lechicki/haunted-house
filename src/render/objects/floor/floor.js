@@ -31,16 +31,20 @@ grassTextureRoughness.repeat.set(8, 8);
 grassTextureRoughness.wrapS = THREE.RepeatWrapping;
 grassTextureRoughness.wrapT = THREE.RepeatWrapping;
 
+export const grassMaterial = new THREE.MeshStandardMaterial({
+	color: '#A9C388',
+	side: THREE.DoubleSide,
+	map: grassTextureColor,
+	aoMap: grassTextureAmbientOcclusion,
+	normalMap: grassTextureNormal,
+	roughness: 0.9,
+	reflectivity: 0,
+	metalness: 0,
+});
+
 export const floor = new THREE.Mesh(
 	new THREE.PlaneGeometry(floorWidth, floorHeight),
-	new THREE.MeshStandardMaterial({
-		color: '#A9C388',
-		side: THREE.DoubleSide,
-		map: grassTextureColor,
-		aoMap: grassTextureAmbientOcclusion,
-		normalMap: grassTextureNormal,
-		roughness: grassTextureRoughness,
-	})
+	grassMaterial
 );
 
 floor.rotation.x = -Math.PI * 0.5; // Rotating floor

@@ -38,3 +38,6 @@ Added bushes and changed file structure.
 
 ![image](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/36646a8b-95c6-4230-94f6-cb4adb343e61)
 
+### **Step 7**:
+
+Added bushes texture.

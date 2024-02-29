@@ -1,0 +1,7 @@
+{
+  "name": "threejs-journey-exercise",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
