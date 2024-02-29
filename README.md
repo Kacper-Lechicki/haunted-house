@@ -15,3 +15,6 @@ Created basic scene with plane, sphere and orbit controls.
 ### **Step 2**:
 
 Added GUI folders with basic controls for Ambient and Directional lights.
+
+![Zrzut ekranu 2024-02-29 o 09 28 50](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/ef8878fd-24d3-446b-a61f-a201ae9d35d7)
+
