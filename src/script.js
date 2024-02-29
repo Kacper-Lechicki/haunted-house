@@ -82,17 +82,30 @@ GUIMoonlightLightFolder.add(moonLight.position, 'z')
 	.name('MoonLight Z'); // Adding light z-position control to GUI
 scene.add(moonLight); // Adding directional light to the scene
 
-// Objects
-const sphere = new THREE.Mesh(
-	new THREE.SphereGeometry(1, 32, 32),
-	new THREE.MeshStandardMaterial({ roughness: 0.7 })
-);
-sphere.position.y = 1; // Setting sphere position
-scene.add(sphere); // Adding sphere to the scene
+/**
+ * House
+ */
+const houseGroup = new THREE.Group();
+scene.add(houseGroup);
 
+//Walls
+const wallsWidth = 4;
+const wallsHeight = 2.5;
+const wallsDepth = 4;
+
+const walls = new THREE.Mesh(
+	new THREE.BoxGeometry(wallsWidth, wallsHeight, wallsDepth),
+	new THREE.MeshStandardMaterial({ color: '#AC8E82' })
+);
+
+walls.position.y = wallsHeight / 2 + 0.001;
+
+houseGroup.add(walls);
+
+//Floor
 const floor = new THREE.Mesh(
 	new THREE.PlaneGeometry(20, 20),
-	new THREE.MeshStandardMaterial({ color: '#a9c388' })
+	new THREE.MeshStandardMaterial({ color: '#A9C388', side: THREE.DoubleSide })
 );
 floor.rotation.x = -Math.PI * 0.5; // Rotating floor
 scene.add(floor); // Adding floor to the scene

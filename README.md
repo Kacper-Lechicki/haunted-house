@@ -15,3 +15,7 @@ Created basic scene with plane, sphere and orbit controls.
 ### **Step 2**:
 
 Added GUI folders with basic controls for Ambient and Directional lights.
+
+### **Step 3**:
+
+Removed the sphere and added walls of the house.
