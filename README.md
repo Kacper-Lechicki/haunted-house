@@ -32,3 +32,6 @@ Added texture of grass for the floor of the scene.
 
 ![image](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/a58139cc-80bd-440c-9a57-91d042d6fbdc)
 
+### **Step 6**:
+
+Added bushes and changed file structure.
