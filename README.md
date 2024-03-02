@@ -41,3 +41,7 @@ Added bushes and changed file structure.
 ### **Step 7**:
 
 Added bushes texture.
+
+### **Step 8**:
+
+Added graves to the scene.
