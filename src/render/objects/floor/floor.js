@@ -3,31 +3,31 @@ import * as THREE from 'three';
 const textureLoader = new THREE.TextureLoader(); // Creating a texture loader
 
 //Floor
-const floorWidth = 20;
-const floorHeight = 20;
+const floorWidth = 50;
+const floorHeight = 50;
 
 //Grass textures
 const grassTextureNormal = textureLoader.load('textures/grass/normal.jpg');
-grassTextureNormal.repeat.set(8, 8);
+grassTextureNormal.repeat.set(16, 16);
 grassTextureNormal.wrapS = THREE.RepeatWrapping;
 grassTextureNormal.wrapT = THREE.RepeatWrapping;
 
 const grassTextureColor = textureLoader.load('textures/grass/color.jpg');
-grassTextureColor.repeat.set(8, 8);
+grassTextureColor.repeat.set(16, 16);
 grassTextureColor.wrapS = THREE.RepeatWrapping;
 grassTextureColor.wrapT = THREE.RepeatWrapping;
 
 const grassTextureAmbientOcclusion = textureLoader.load(
 	'textures/grass/ambientOcclusion.jpg'
 );
-grassTextureAmbientOcclusion.repeat.set(8, 8);
+grassTextureAmbientOcclusion.repeat.set(16, 16);
 grassTextureAmbientOcclusion.wrapS = THREE.RepeatWrapping;
 grassTextureAmbientOcclusion.wrapT = THREE.RepeatWrapping;
 
 const grassTextureRoughness = textureLoader.load(
 	'textures/grass/roughness.jpg'
 );
-grassTextureRoughness.repeat.set(8, 8);
+grassTextureRoughness.repeat.set(16, 16);
 grassTextureRoughness.wrapS = THREE.RepeatWrapping;
 grassTextureRoughness.wrapT = THREE.RepeatWrapping;
 

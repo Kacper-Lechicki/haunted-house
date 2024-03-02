@@ -58,7 +58,7 @@ export const doorLight = new THREE.PointLight(
 	doorLightDistance
 );
 
-doorLight.position.set(0, 2.4, 2.7);
+doorLight.position.set(0, 2.1, 2.7);
 
 GUIDoorLightFolder.add(doorLight, 'intensity')
 	.min(0)

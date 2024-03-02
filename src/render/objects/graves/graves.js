@@ -31,11 +31,7 @@ const generateGraves = () => {
 
 	for (let i = 0; i < graveOptions.number; i++) {
 		const angle = Math.random() * Math.PI * 2;
-		let radius = 3 + Math.random() * 6;
-
-		if (radius < 5) {
-			radius = 5 * Math.random() * 0.3;
-		}
+		let radius = 5 + Math.random() * 6;
 
 		const x = Math.sin(angle) * radius;
 		const z = Math.cos(angle) * radius;
