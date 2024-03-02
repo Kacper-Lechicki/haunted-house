@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { camera } from './render/config/camera';
 import { controls } from './render/config/controls';
 import { renderer } from './render/config/renderer';
-import { ambientLight, moonLight } from './render/config/lights';
+import { ambientLight, doorLight, moonLight } from './render/config/lights';
 
 import { floor } from './render/objects/floor/floor';
 import { houseGroup } from './render/objects/house/house';
@@ -29,11 +29,14 @@ window.addEventListener('resize', () => {
 
 // Scene
 const scene = new THREE.Scene(); // Creating a new Three.js scene
+const fog = new THREE.Fog('#313340', 2, 17);
+scene.fog = fog;
 scene.add(ambientLight); // Adding ambient light to the scene
 scene.add(moonLight); // Adding directional light to the scene
 scene.add(camera); // Adding camera to the scene
 
 scene.add(floor); // Adding floor to the scene
+houseGroup.add(doorLight);
 scene.add(houseGroup); // Adding house group to the scene
 scene.add(graves); // Adding graves to the scene
 
@@ -48,6 +51,7 @@ const tick = () => {
 
 	// Render scene
 	renderer.render(scene, camera);
+	renderer.setClearColor('#313340');
 
 	// Call tick again on the next frame
 	window.requestAnimationFrame(tick);
