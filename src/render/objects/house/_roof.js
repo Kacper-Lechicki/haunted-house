@@ -11,3 +11,5 @@ export const roof = new THREE.Mesh(
 
 roof.position.y = 2.3 + roofHeight / 2 + 0.001; // Positioning roof
 roof.rotation.y = Math.PI / 4; // Rotating roof
+
+roof.castShadow = true;

@@ -5,6 +5,7 @@ import {
 	GUIDoorLightFolder,
 	GUIMoonlightLightFolder,
 } from './gui';
+import { door } from '../objects/house/_door';
 
 const ambientLightIntensity = 0.1;
 
@@ -27,6 +28,8 @@ export const moonLight = new THREE.DirectionalLight(
 ); // Creating directional light
 
 moonLight.position.set(4, 5, -2); // Setting light position
+
+moonLight.castShadow = true;
 
 GUIMoonlightLightFolder.add(moonLight, 'intensity')
 	.min(0)
@@ -57,6 +60,8 @@ export const doorLight = new THREE.PointLight(
 	doorLightIntensity,
 	doorLightDistance
 );
+
+doorLight.castShadow = true;
 
 doorLight.position.set(0, 2.1, 2.7);
 

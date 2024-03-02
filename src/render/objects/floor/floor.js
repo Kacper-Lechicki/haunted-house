@@ -48,3 +48,5 @@ export const floor = new THREE.Mesh(
 );
 
 floor.rotation.x = -Math.PI * 0.5; // Rotating floor
+
+floor.receiveShadow = true;

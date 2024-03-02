@@ -22,3 +22,7 @@ bush2.position.set(1.5, 0.1, 2.15);
 export const bush3 = new THREE.Mesh(bushGeometry, grassMaterial);
 bush3.scale.set(0.6, 0.6, 0.6);
 bush3.position.set(-1, 0.2, 2.35);
+
+bush1.castShadow = true;
+bush2.castShadow = true;
+bush3.castShadow = true;

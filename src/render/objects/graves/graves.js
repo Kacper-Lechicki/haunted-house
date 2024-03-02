@@ -41,6 +41,8 @@ const generateGraves = () => {
 		grave.position.set(x, graveOptions.graveHeight / 2, z);
 		grave.rotation.y = Math.random();
 
+		grave.castShadow = true;
+
 		graves.add(grave);
 	}
 };

@@ -28,3 +28,5 @@ export const walls = new THREE.Mesh(
 );
 
 walls.position.y = wallsHeight / 2 + 0.001; // Positioning walls
+
+walls.castShadow = true;

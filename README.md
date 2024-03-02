@@ -60,3 +60,6 @@ Textures for door and walls.
 
 ![image](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/ae6420f9-790f-4856-abc9-5339501bd02b)
 
+### **Step 11**:
+
+Added ghosts and shadows to the scene.

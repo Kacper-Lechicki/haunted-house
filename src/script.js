@@ -8,6 +8,7 @@ import { ambientLight, doorLight, moonLight } from './render/config/lights';
 import { floor } from './render/objects/floor/floor';
 import { houseGroup } from './render/objects/house/house';
 import { graves } from './render/objects/graves/graves';
+import { ghosts } from './render/objects/ghosts/ghosts';
 
 // Sizes
 let sizes = {
@@ -39,6 +40,7 @@ scene.add(floor); // Adding floor to the scene
 houseGroup.add(doorLight);
 scene.add(houseGroup); // Adding house group to the scene
 scene.add(graves); // Adding graves to the scene
+scene.add(ghosts); // Adding ghosts to the scene
 
 // Animation
 const clock = new THREE.Clock(); // Creating a clock for animation
