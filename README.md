@@ -51,3 +51,6 @@ Added graves to the scene.
 ### **Step 9**:
 
 Added fog and door light.
+
+![image](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/258f2b33-ff60-4a3a-8ee2-144b6d7daa4e)
+
