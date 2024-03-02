@@ -45,3 +45,6 @@ Added bushes texture.
 ### **Step 8**:
 
 Added graves to the scene.
+
+![image](https://github.com/Kacper-Lechicki/THREEJS_Haunted_House/assets/160114199/0ff01512-749e-4160-a285-d7fe96b50600)
+
